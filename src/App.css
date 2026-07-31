@@ -45,7 +45,7 @@
 /* "Congratulations," and "for your presentation." */
 .greeting-line {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1rem, 3.5vw, 2rem);
+  font-size: clamp(1.5rem, 5.2vw, 3.2rem);
   font-weight: 300;
   font-style: italic;
   color: #ffffff;
@@ -59,7 +59,7 @@
 /* "Elisa," — script font, much larger, the star of the show */
 .greeting-name {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(4rem, 16vw, 9rem);
+  font-size: clamp(6rem, 24vw, 14rem);
   font-weight: 400;
   color: #ffffff;
   line-height: 1.1;
@@ -90,6 +90,6 @@
   }
 
   .greeting-name {
-    font-size: clamp(3.5rem, 20vw, 6rem);
+    font-size: clamp(5.5rem, 28vw, 8rem);
   }
 }

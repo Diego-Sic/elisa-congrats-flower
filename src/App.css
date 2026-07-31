@@ -7,7 +7,7 @@
   height: 100svh;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;   /* anchor to top */
   justify-content: center;
 }
 
@@ -21,52 +21,63 @@
   object-fit: cover;
   object-position: center bottom;
 
-  /* Flower rises from below on load */
   animation: hero-rise 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ── Text — centered over the image ─────────────────────────────────── */
+/* ── Text — near the top ─────────────────────────────────────────────── */
 
 .greeting {
   position: relative;
   z-index: 2;
   text-align: center;
   padding: 0 2rem;
+  margin-top: clamp(2.5rem, 8vh, 5.5rem);  /* top padding, responsive */
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+
+  opacity: 0;
+  animation: text-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+}
+
+/* "Congratulations," and "for your presentation." */
+.greeting-line {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.6rem, 5vw, 3.8rem);
+  font-size: clamp(1rem, 3.5vw, 2rem);
   font-weight: 300;
   font-style: italic;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   line-height: 1.4;
-
-  /* Subtle text shadow so it reads on any part of the gradient */
   text-shadow:
-    0 1px 8px rgba(0, 0, 0, 0.15),
-    0 2px 24px rgba(0, 0, 0, 0.10);
+    0 1px 6px rgba(0, 0, 0, 0.18),
+    0 2px 20px rgba(0, 0, 0, 0.12);
+}
 
-  /* Fades in after the hero image has risen */
-  opacity: 0;
-  transform: translateY(16px);
-  animation: text-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+/* "Elisa," — script font, much larger, the star of the show */
+.greeting-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(4rem, 16vw, 9rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.15),
+    0 4px 32px rgba(0, 0, 0, 0.10);
 }
 
 /* ── Keyframes ───────────────────────────────────────────────────────── */
 
 @keyframes hero-rise {
-  0%   {
-    transform: translateY(6%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  0%   { transform: translateY(6%); opacity: 0; }
+  100% { transform: translateY(0);  opacity: 1; }
 }
 
 @keyframes text-in {
-  0%   { opacity: 0; transform: translateY(16px); }
+  0%   { opacity: 0; transform: translateY(14px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -74,7 +85,11 @@
 
 @media (max-width: 480px) {
   .greeting {
-    font-size: clamp(1.4rem, 6.5vw, 2rem);
-    padding: 0 1.5rem;
+    margin-top: clamp(2rem, 6vh, 3.5rem);
+    padding: 0 1.25rem;
+  }
+
+  .greeting-name {
+    font-size: clamp(3.5rem, 20vw, 6rem);
   }
 }

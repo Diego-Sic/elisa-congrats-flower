@@ -1,0 +1,80 @@
+/* ── Layout ─────────────────────────────────────────────────────────── */
+
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Hero image — full-screen cover ─────────────────────────────────── */
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+
+  /* Flower rises from below on load */
+  animation: hero-rise 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Text — centered over the image ─────────────────────────────────── */
+
+.greeting {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 2rem;
+
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 5vw, 3.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+
+  /* Subtle text shadow so it reads on any part of the gradient */
+  text-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.15),
+    0 2px 24px rgba(0, 0, 0, 0.10);
+
+  /* Fades in after the hero image has risen */
+  opacity: 0;
+  transform: translateY(16px);
+  animation: text-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+}
+
+/* ── Keyframes ───────────────────────────────────────────────────────── */
+
+@keyframes hero-rise {
+  0%   {
+    transform: translateY(6%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes text-in {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .greeting {
+    font-size: clamp(1.4rem, 6.5vw, 2rem);
+    padding: 0 1.5rem;
+  }
+}

@@ -1,25 +1,7 @@
 import { useState } from 'react'
 import heroImg from './assets/hero.png'
+import ASCII_ROSE from './assets/rose.txt?raw'
 import './App.css'
-
-const ASCII_ROSE = `
-       ,--.
-      ( @@ )
-    ,-' \/ \`-,
-   /  ,-----,  \\
-  / ,' ,---, \`. \\
- | /  /     \\  \\ |
- |/  |   *   |  \\|
- (    \\     /    )
-  \\    \`---'    /
-   \`-,_______,-'
-         |
-        \\|/
-         |
-        / \\
-       /   \\
-      /     \\
-`
 
 const COLORS = [
   { hex: '#ff6b9d', glow: 'rgba(255,107,157,0.55)', label: 'Rose' },

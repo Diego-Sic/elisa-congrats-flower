@@ -42,15 +42,17 @@ function App() {
       {/* Middle: rose button */}
       <div className="rose-section">
         {roseVisible && (
-          <pre
-            className="ascii-rose"
-            style={{
-              color: current.hex,
-              textShadow: `0 0 8px ${current.glow}, 0 0 20px ${current.glow}`,
-            }}
-          >
-            {ASCII_ROSE}
-          </pre>
+          <div className="rose-box">
+            <pre
+              className="ascii-rose"
+              style={{
+                color: current.hex,
+                textShadow: `0 0 8px ${current.glow}, 0 0 20px ${current.glow}`,
+              }}
+            >
+              {ASCII_ROSE}
+            </pre>
+          </div>
         )}
 
         <button
